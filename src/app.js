@@ -1,8 +1,9 @@
 import express from "express";
-import datacontactroutes from "./routes/Datacontact.Routes.js"
-import empresaroutes from "./routes/Empresa.Routes.js"
-import profesionroutes from "./routes/Profesion.Routes.js"
-import contactoroutes from "./routes/Contacto.Routes.js"
+import datacontactroutes from "./routes/Datacontact.Routes.js";
+import empresaroutes from "./routes/Empresa.Routes.js";
+import profesionroutes from "./routes/Profesion.Routes.js";
+import contactoroutes from "./routes/Contacto.Routes.js";
+import cors from "cors";
 
 const app = express();
 
