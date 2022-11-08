@@ -1,8 +1,8 @@
-import { contacto } from '../models/Contacto.js'
+import { Contacto } from '../models/Contacto.js'
 
 export const getContactos = async (req, res) => {
     try {
-        const contactos = await contacto.findAll();
+        const contactos = await Contacto.findAll();
         res.json(contactos);
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -13,7 +13,7 @@ export const getContactos = async (req, res) => {
 export const getContacto = async (req, res) => {
     try {
         const { id_contacto } = req.params;
-        const contact = await contacto.findOne({
+        const contact = await Contacto.findOne({
             where: {
                 id_contacto,
             },
@@ -33,7 +33,7 @@ export const getContacto = async (req, res) => {
 export const createContacto = async (req, res) => {
     try {
         const { correo, telefono, direccion, celular, idInformacion, idempresa, idprofesion } = req.body
-        const newContacto = await contacto.create({
+        const newContacto = await Contacto.create({
             correo,
             telefono,
             direccion,
@@ -52,7 +52,7 @@ export const createContacto = async (req, res) => {
 export const updateContacto = async (req, res) => {
     try {
         const { id_contacto } = req.params
-        const update = await contacto.findOne({
+        const update = await Contacto.findOne({
             where: {
                 id_contacto
             }
@@ -70,7 +70,7 @@ export const deleteContacto = async (req, res) => {
     try {
         const { id_contacto } = req.params;
 
-        const elim_cont = await contacto.destroy({
+        const elim_cont = await Contacto.destroy({
             where: {
                 id_contacto,
             },

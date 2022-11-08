@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../db/db.js'
-import { contacto } from './contacto.js'
+import { Contacto } from './Contacto.js'
 
 
-export const empresa = sequelize.define('company', {
+export const Empresa = sequelize.define('empresa', {
 
 
     id_empresa: {
@@ -29,13 +29,13 @@ export const empresa = sequelize.define('company', {
     timestamps: false
 });
 
-empresa.hasMany(contacto, {
+Empresa.hasMany(Contacto, {
 
     foreignKey: 'idempresa',
     sourceKey: 'id_empresa'
 })
 
-contacto.belongsTo(empresa, {
+Contacto.belongsTo(Empresa, {
 
     foreignKey: 'idempresa',
     targetId: 'id_contacto'

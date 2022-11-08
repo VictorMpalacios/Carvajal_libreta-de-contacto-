@@ -1,8 +1,8 @@
-import { empresa } from "../models/Empresa.js"
+import { Empresa } from "../models/Empresa.js"
 
 export const getEmpresas = async (req, res) => {
     try {
-        const empresas = await empresa.findAll();
+        const empresas = await Empresa.findAll();
         res.json(empresas);
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -12,7 +12,7 @@ export const getEmpresas = async (req, res) => {
 export const getEmpresa = async (req, res) => {
     try {
         const { id_empresa } = req.params;
-        const empresas = await empresa.findOne({
+        const empresas = await Empresa.findOne({
             where: {
                 id_empresa,
             },
@@ -32,7 +32,7 @@ export const getEmpresa = async (req, res) => {
 export const createEmpresa = async (req, res) => {
     const { nombre_empresa, celular_empresarial} = req.body
     try {
-        const newEmpresa = await empresa.create({
+        const newEmpresa = await Empresa.create({
             nombre_empresa,
             celular_empresarial
         });
@@ -47,7 +47,7 @@ export const createEmpresa = async (req, res) => {
 export const updateEmpresa = async (req, res) => {
     try {
         const { id_empresa } = req.params
-        const update = await empresa.findOne({
+        const update = await Empresa.findOne({
             where: {
                 id_empresa
             }
@@ -67,7 +67,7 @@ export const deleteEmpresa = async (req, res) => {
     try {
         const { id_empresa } = req.params;
 
-        const elim_empresa = await empresa.destroy({
+        const elim_empresa = await Empresa.destroy({
             where: {
                 id_empresa,
             },

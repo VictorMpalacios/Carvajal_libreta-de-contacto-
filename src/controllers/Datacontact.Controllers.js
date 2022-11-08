@@ -1,10 +1,10 @@
-import { data } from "../models/Data.js"
-import { contacto } from '../models/Contacto.js'
+import { Data } from "../models/Data.js"
+import { Contacto } from '../models/Contacto.js'
 
 
 export const getDatacontacts = async (req, res) => {
     try {
-        const datas = await data.findAll();
+        const datas = await Data.findAll();
         res.json(datas);
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -14,7 +14,7 @@ export const getDatacontacts = async (req, res) => {
 export const getDatacontact = async (req, res) => {
     try {
         const { id_data } = req.params;
-        const datas = await data.findOne({
+        const datas = await Data.findOne({
             where: {
                 id_data,
             },
@@ -34,7 +34,7 @@ export const getDatacontact = async (req, res) => {
 export const createDatacontact = async (req, res) => {
     const { nombre, apellido } = req.body
     try {
-        const newData = await data.create({
+        const newData = await Data.create({
             nombre,
             apellido
         });
@@ -49,7 +49,7 @@ export const createDatacontact = async (req, res) => {
 export const updateDatacontact = async (req, res) => {
     try {
         const { id_data } = req.params
-        const update = await data.findOne({
+        const update = await Data.findOne({
             where: {
                 id_data
             }
@@ -69,7 +69,7 @@ export const deleteDatacontact = async (req, res) => {
     try {
         const { id_data } = req.params;
 
-        const elim_data = await data.destroy({
+        const elim_data = await Data.destroy({
             where: {
                 id_data,
             },
@@ -89,7 +89,7 @@ export const deleteDatacontact = async (req, res) => {
 export const getContactoydata = async (req, res) => {
     try {
         const { id_data } = req.params;
-        const contact = await contacto.findAll({
+        const contact = await Contacto.findAll({
             where: {
                 idInformacion: id_data
             },

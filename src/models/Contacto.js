@@ -3,7 +3,7 @@ import {sequelize} from '../db/db.js'
 
 
 
-export const contacto= sequelize.define('contact',{
+export const Contacto= sequelize.define('contacto',{
 
 
     id_contacto: {

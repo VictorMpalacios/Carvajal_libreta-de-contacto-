@@ -1,8 +1,8 @@
-import { profesion } from "../models/Profesion.js"
+import { Profesion } from "../models/Profesion.js"
 
 export const getProfesiones = async (req, res) => {
     try {
-        const profesiones = await profesion.findAll();
+        const profesiones = await Profesion.findAll();
         res.json(profesiones);
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -12,7 +12,7 @@ export const getProfesiones = async (req, res) => {
 export const getProfesion = async (req, res) => {
     try {
         const { id_profesion } = req.params;
-        const profesiones = await profesion.findOne({
+        const profesiones = await Profesion.findOne({
             where: {
                 id_profesion,
             },
@@ -32,7 +32,7 @@ export const getProfesion = async (req, res) => {
 export const createProfesion = async (req, res) => {
     const { nombre_profesion } = req.body
     try {
-        const newProfesion = await profesion.create({
+        const newProfesion = await Profesion.create({
             nombre_profesion,
         })
         res.json(newProfesion);
@@ -45,7 +45,7 @@ export const createProfesion = async (req, res) => {
 export const updateProfesion = async (req, res) => {
     try {
         const { id_profesion } = req.params
-        const update = await profesion.findOne({
+        const update = await Profesion.findOne({
             where: {
                 id_profesion
             }
@@ -65,7 +65,7 @@ export const deleteProfesion = async (req, res) => {
     try {
         const { id_profesion } = req.params;
 
-        const elim_profesion = await profesion.destroy({
+        const elim_profesion = await Profesion.destroy({
             where: {
                 id_profesion,
             },
