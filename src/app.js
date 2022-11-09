@@ -10,10 +10,11 @@ const app = express();
 // middlewares
 app.use(express.json());
 
+app.use(cors());
 app.use(datacontactroutes);
 app.use(empresaroutes);
 app.use(profesionroutes);
-app.use(contactoroutes);
+app.use(contactoroutes)
 
 export default app;
 
