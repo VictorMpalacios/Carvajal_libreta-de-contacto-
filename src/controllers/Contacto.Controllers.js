@@ -32,15 +32,13 @@ export const getContacto = async (req, res) => {
 
 export const createContacto = async (req, res) => {
     try {
-        const { correo, telefono, direccion, celular, idInformacion, idempresa, idprofesion } = req.body
+        const { correo, telefono, direccion, celular, idInformacion} = req.body
         const newContacto = await Contacto.create({
             correo,
             telefono,
             direccion,
             celular,
-            idInformacion,
-            idempresa,
-            idprofesion
+            idInformacion
         });
         res.json(newContacto);
     } catch (error) {

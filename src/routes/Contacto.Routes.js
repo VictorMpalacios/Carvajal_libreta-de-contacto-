@@ -9,5 +9,4 @@ router.post("/contacto", createContacto)
 router.put("/contacto/:id_contacto", updateContacto)
 router.delete("/contacto/:id_contacto", deleteContacto)
 router.get("/contacto/:id_contacto", getContacto)
-
 export default router

@@ -89,14 +89,16 @@ export const deleteDatacontact = async (req, res) => {
 export const getContactoydata = async (req, res) => {
     try {
         const { id_data } = req.params;
+        const {idInformacion} = req.params;
         const contact = await Contacto.findAll({
             where: {
-                idInformacion: id_data
+                idInformacion : id_data
             },
         });
         if (!contact) {
             return res.status(404).json({ message: 'ESE CONTACTO NO EXISTE' });
         }
+        res.json(contact);
         console.log(contact)
         res.sendStatus(204)
     } catch (error) {
