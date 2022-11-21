@@ -23,8 +23,7 @@ export const getDatacontact = async (req, res) => {
 
             return res.status(404).json({ message: 'ESE CONTACTO NO EXISTE' });
 
-        }
-        res.json(datas);
+        }else{res.json(datas);}        
     } catch (error) {
         return res.status(500).json({ message: error.message });
 
@@ -38,7 +37,6 @@ export const createDatacontact = async (req, res) => {
             nombre,
             apellido
         });
-
         res.json(newData);
     } catch (error) {
 
@@ -57,8 +55,8 @@ export const updateDatacontact = async (req, res) => {
         update.set(req.body)
         await update.save()
         return res.json(update)
-        console.log(update);
-        res.json(update);
+        // console.log(update);
+        // res.json(update);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -97,10 +95,8 @@ export const getContactoydata = async (req, res) => {
         });
         if (!contact) {
             return res.status(404).json({ message: 'ESE CONTACTO NO EXISTE' });
+        }else{ res.json(contact);
         }
-        res.json(contact);
-        console.log(contact)
-        res.sendStatus(204)
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: error.message });

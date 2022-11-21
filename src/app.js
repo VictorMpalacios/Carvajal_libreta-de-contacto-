@@ -7,7 +7,6 @@ const app = express();
 
 // middlewares
 app.use(express.json());
-
 app.use(cors());
 app.use(datacontactroutes);
 app.use(contactoroutes)

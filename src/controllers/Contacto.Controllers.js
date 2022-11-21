@@ -6,8 +6,8 @@ export const getContactos = async (req, res) => {
         res.json(contactos);
     } catch (error) {
         return res.status(500).json({ message: error.message });
-
     }
+
 };
 
 export const getContacto = async (req, res) => {
@@ -17,22 +17,22 @@ export const getContacto = async (req, res) => {
             where: {
                 id_contacto,
             },
+
         });
         if (!contact) {
 
             return res.status(404).json({ message: 'ESE CONTACTO NO EXISTE' });
 
-        }
-        res.json(contact);
+        } else { res.json(contact); }
     } catch (error) {
         return res.status(500).json({ message: error.message });
-
     }
+
 };
 
 export const createContacto = async (req, res) => {
     try {
-        const { correo, telefono, direccion, celular, idInformacion} = req.body
+        const { correo, telefono, direccion, celular, idInformacion } = req.body
         const newContacto = await Contacto.create({
             correo,
             telefono,
@@ -42,7 +42,6 @@ export const createContacto = async (req, res) => {
         });
         res.json(newContacto);
     } catch (error) {
-
         return res.status(500).json({ message: error.message });
     }
 };
